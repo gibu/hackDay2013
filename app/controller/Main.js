@@ -48,7 +48,12 @@ Ext.define('Hack.controller.Main', {
 				},
 	            callback: function(success, result) {
 	    			console.log(config);
-	    			that.getLogo().setHtml('<img src="'+config.images.logo.highDpi+'"/>');
+	    			var topHtml = '';
+	    			topHtml += '<img src="'+config.images.logo.highDpi+'"/>';
+	    			topHtml += ' <STYLE type="text/css">'+
+   								'body,.backgroundColor'+
+ 								'</STYLE>';
+	    			that.getLogo().setHtml(topHtml);
 	                var weather = result.result.elements;
 					//console.log(weather);
 					//console.log(that.getFeed());
