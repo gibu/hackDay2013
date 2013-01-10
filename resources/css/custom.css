@@ -22,6 +22,11 @@
 	overflow:hidden;
 	white-space:nowrap;
 }
+#landingPage  div{
+	margin: 0px;
+	padding: 0px;
+	background-repeat: no-repeat;
+}
 
 @media screen and (min-width: 288px){
       .x-inner, .x-body{
@@ -40,6 +45,10 @@
       .x-panel:nth-child(odd) .listElement{
 
       }
+		.landingPageImg {
+			width: 100%;
+			height: 480px;
+		}
 }
 
 @media screen and (min-width: 480px){
@@ -61,4 +70,8 @@
       .listElement.el0{
       	margin-left:50px;
       }
+	.landingPageImg {
+			height: 1024px;
+		}
+
 }

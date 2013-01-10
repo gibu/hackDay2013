@@ -10,6 +10,7 @@ Ext.define('Hack.controller.Main', {
         	second: '#second',
         	logo: '#logo',
         	main: 'main',
+        	landingPage: '#landingPage',
         	newsDetail: '#newsDetail'
         },
         control: {
@@ -18,6 +19,14 @@ Ext.define('Hack.controller.Main', {
         	},
         	listItem:{
         		tap: 'clickItem'
+        	},
+        	main:{
+        		pop: function(current,prevoiusView){
+        			
+        			if(prevoiusView.id == "newsDetail"){
+        				prevoiusView.destroy();
+        			}
+        		}
         	}
         }      
     },
@@ -66,7 +75,11 @@ Ext.define('Hack.controller.Main', {
    								'.backgroundColor{background-color:'+config.colors.background+'}'+
  								'</STYLE>';
 	    			that.getLogo().setHtml(topHtml);
-	                var weather = result.result.elements;
+					console.log(that);
+					console.log(result);
+					that.renderLandingPage(that);
+					
+					var weather = result.result.elements;
 					//console.log(weather);
 					//console.log(that.getFeed());
 					var myStore = Ext.create("Ext.data.Store", {
@@ -98,6 +111,13 @@ Ext.define('Hack.controller.Main', {
 	            }
 	    });      	
     },
+	renderLandingPage: function(){
+		var _html = '<div class="landingPageImg"></div><style>';
+		_html += '@media screen and (min-width: 288px){.landingPageImg {background: url("'+config.images.landing.smartphone.highDpi+'")}}';
+		_html += '@media screen and (min-width: 768px){.landingPageImg {background: url("'+config.images.landing.tablet.highDpi+'")}}</style>';
+		_html += '</style>';
+		this.getLandingPage().setHtml(_html);          
+	},
     clickItem: function(){
     	console.log("clickItem");
     },
@@ -112,6 +132,20 @@ Ext.define('Hack.controller.Main', {
     	var id = this.id;
     	store = Ext.data.StoreManager.lookup('newsStore');
     	var record = store.data.getAt(id);
+    	that.newsDetailContainer = Ext.create('Hack.view.NewsDetail',{
+    		data: record.getData(),
+			listeners: {
+				painted: function(panel){
+					a = panel;
+					panel.on({
+					   tap: that.popNewsDetail,
+					   delegate: 'div.back'
+					});			        
+				}
+			}       		
+    	});
+    	that.getMain().push(that.newsDetailContainer);
+    	/*
     	that.getMain().push({
     		xtype: 'newsDetail',
     		data: record.getData(),
@@ -120,13 +154,14 @@ Ext.define('Hack.controller.Main', {
 					a = panel;
 					panel.on({
 					   tap: that.popNewsDetail,
-					   delegate: '.back'
+					   delegate: 'div.back'
 					});			        
 				}
 			}    		
-    	});     	
+    	});*/     	
     },
     popNewsDetail: function(){
     	that.getMain().pop();
+    	//that.newsDetailContainer.destroy();
     }
 });
