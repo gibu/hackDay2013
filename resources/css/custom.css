@@ -3,9 +3,7 @@
 .listElement{
 	height:190px;
 }
-.x-panel:nth-child(1) .listElement{
-	marin-top:100px;
-}
+
 .elementTitle{
 	display:block;
 	width:100%;
@@ -14,6 +12,9 @@
 	top:-42px;
 	position:relative;
 	opacity:0.5;
+}
+#second{
+	margin-top:90px;
 }
 .elementTitleText{
 	line-height:1.5em;
@@ -34,8 +35,14 @@
 	position:absolute;
 	top:0px;
 	left:0px;
+	width:200px;
+	height:60px;
 }
-
+#logoTop{
+	height:60px;
+	width:200px;
+	display:block;
+}
 @media screen and (min-width: 288px){
       .x-inner, .x-body{
       	margin:auto;

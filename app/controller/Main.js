@@ -65,11 +65,11 @@ Ext.define('Hack.controller.Main', {
 	            callback: function(success, result) {
 	    			console.log(config);
 	    			var topHtml = '';
-	    			topHtml += '<img src="'+config.images.logo.highDpi+'"/>';
+	    			topHtml += '<span id="logoTop"></span>';
 	    			topHtml += ' <STYLE type="text/css">'+
    								'body,.backgroundColor, .x-layout-card-item, .x-html{background-color:#ffffff; color:'+config.colors.text+'}'+
 								'a{color:'+config.colors.link+'}'+
-								'.newsTitle{color:'+config.colors.title+'}'+
+								'.newsTitle{color:'+config.colors.link+'}'+
 								'#logo{background-color:'+config.colors.background+'}'+
 								'.elementTitleText{color:'+config.colors.title+'}'+
 								'.elementTitle{background-color: '+config.colors.background+'}'+
@@ -114,8 +114,8 @@ Ext.define('Hack.controller.Main', {
     },
 	renderLandingPage: function(){
 		var _html = '<div class="landingPageImg"></div><style>';
-		_html += '@media screen and (min-width: 288px){.landingPageImg {background: url("'+config.images.landing.smartphone.highDpi+'")}}';
-		_html += '@media screen and (min-width: 768px){.landingPageImg {background: url("'+config.images.landing.tablet.highDpi+'")}}</style>';
+		_html += '@media screen and (min-width: 288px){.landingPageImg {background: url("'+config.images.landing.smartphone.highDpi+'")}#logoTop{background:url("'+config.images.logo.lowDpi+'") center no-repeat}}';
+		_html += '@media screen and (min-width: 768px){.landingPageImg {background: url("'+config.images.landing.tablet.highDpi+'")}#logoTop{background:url("'+config.images.logo.lowDpi+'")} center np-repeat}</style>';
 		_html += '</style>';
 		this.getLandingPage().setHtml(_html);          
 	},
