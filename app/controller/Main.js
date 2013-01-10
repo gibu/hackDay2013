@@ -124,6 +124,8 @@ Ext.define('Hack.controller.Main', {
     	console.log("clickItem");
     },
     showNews: function(list,index,target, record){
+		console.log('data'+record.data);
+		console.log('getData'+record.getData());
     	this.getMain().push({
     		xtype: 'newsDetail',
     		title: record.data.title.slice(0,20),
@@ -134,6 +136,7 @@ Ext.define('Hack.controller.Main', {
     	var id = this.id;
     	store = Ext.data.StoreManager.lookup('newsStore');
     	var record = store.data.getAt(id);
+		console.log(record.getData());
     	that.newsDetailContainer = Ext.create('Hack.view.NewsDetail',{
     		data: record.getData(),
 			listeners: {

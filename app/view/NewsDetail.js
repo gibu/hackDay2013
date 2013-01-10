@@ -7,7 +7,8 @@ Ext.define("Hack.view.NewsDetail", {
        	styleHtmlContent: true,         
         tpl: [
    			'<div class="back">powrót</div>',
-        	'<div>{title}</div>'
+        	'<div>{title}</div>',
+			'<div>{lead}</div>'
         ]   
 	}
 });
