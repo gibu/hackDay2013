@@ -21,8 +21,8 @@ Ext.define('Hack.view.Main', {
 		    items: [
 		        {
 					xtype: 'panel',
-					id: 'landingPage'
-					
+					id: 'landingPage',
+					fullscreen: true
 		        },
 		        {
 				    //layout: 'vbox',
