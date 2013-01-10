@@ -70,6 +70,7 @@
 .detailWrapper {
 	text-align: left;
 	display: inline-block;
+	width:100%;
 }
 .nav {
 	width: 100%;
