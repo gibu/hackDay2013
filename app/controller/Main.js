@@ -51,7 +51,10 @@ Ext.define('Hack.controller.Main', {
 	    			var topHtml = '';
 	    			topHtml += '<img src="'+config.images.logo.highDpi+'"/>';
 	    			topHtml += ' <STYLE type="text/css">'+
-   								'body,.backgroundColor'+
+   								'body,.backgroundColor, .x-layout-card-item, .x-html{background-color:'+config.colors.background+'; color:'+config.colors.text+'}'+
+								'a{color:'+config.colors.link+'}'+
+								'.newsTitle{color:'+config.colors.title+'}'+
+   								'body,.backgroundColor{background-color:'+config.colors.background+'}'+
  								'</STYLE>';
 	    			that.getLogo().setHtml(topHtml);
 	                var weather = result.result.elements;
@@ -77,7 +80,7 @@ Ext.define('Hack.controller.Main', {
 					    var base = buff.toString('base64');
 					    var ret = base.replace(/=/g, '_');*/
 	           			//console.log(element);
-	           			r += '<div class="listElement '+element.type+'"><img src="'+element.image+'" class="newsImg"/><span class="elementTitle">'+element.title+'</span><span class="newsBigLead">'+element.lead+'</span></div>';
+	           			r += '<div class="listElement '+element.type+'"><img src="'+element.image+'" class="newsImg"/><span class="elementTitle">'+element.title+'</span></div>';
 	           		}
 	           		that.getSecond().setHtml(r);
 	           		//that.getFeed().setStore(myStore);
