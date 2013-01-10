@@ -36,7 +36,7 @@ Ext.define('Hack.controller.Main', {
     	Ext.util.JSONP.request({
 		  url: 'conf.js',
 		  callbackKey: 'callback',
-		  callback: function( success, data ) {config = data;}
+		  callback: function( success, data ) { console.log(data);  config = data;}
 		});
 
 	    Ext.data.JsonP.request({
@@ -64,9 +64,20 @@ Ext.define('Hack.controller.Main', {
 				},
 	            callback: function(success, result) {
 	    			console.log(config);
-	    			that.getLogo().setHtml('<img src="'+config.images.logo.highDpi+'"/>');
-					//console.log(that);
-					//console.log(result);
+	    			var topHtml = '';
+	    			topHtml += '<img src="'+config.images.logo.highDpi+'"/>';
+	    			topHtml += ' <STYLE type="text/css">'+
+   								'body,.backgroundColor, .x-layout-card-item, .x-html{background-color:#ffffff; color:'+config.colors.text+'}'+
+								'a{color:'+config.colors.link+'}'+
+								'.newsTitle{color:'+config.colors.title+'}'+
+								'#logo{background-color:'+config.colors.background+'}'+
+								'.elementTitleText{color:'+config.colors.title+'}'+
+								'.elementTitle{background-color: '+config.colors.background+'}'+
+   								'.backgroundColor{background-color:'+config.colors.background+'}'+
+ 								'</STYLE>';
+	    			that.getLogo().setHtml(topHtml);
+					console.log(that);
+					console.log(result);
 					that.renderLandingPage(that);
 					
 					var weather = result.result.elements;
@@ -80,21 +91,9 @@ Ext.define('Hack.controller.Main', {
 	           		//console.log(myStore);
 	           		a = myStore.first();
 	           		var tpl = '<div id="data_0" class="firstElement listItem"><img src="'+a.data['image']+'" class="newsImg"/><span class="newsTitle">'+ a.data['title']+'</span></div>';
-	           		x = that.getFirst();
-	           		that.getFirst().add({
-							xtype: 'panel',
-						    html: tpl,
-						    id: 'data_0',
-							listeners: {
-								painted: function(panel){
-									var id = panel.getId().substr(5);
-							        panel.on('tap', that.showDetal,{id: id});
-								}
-							}		           				           				
-	           			}	
-	           		);	
+
 	           		var r = '';
-	           		for(var i = 1; i < myStore.data.all.length; i++){
+	           		for(var i = 0; i < myStore.data.all.length; i++){
 	           			var element = myStore.data.all[i].data
 	           			r = '<div rel="2" id="data_'+ i +'" class="listElement '+element.type+' listItem el'+i%2+'"><img src="'+element.image+'" class="newsImg"/><span class="elementTitle"></span><span class="elementTitleText">'+element.title+'</span></div>';
 	           			that.getSecond().add({
@@ -147,6 +146,20 @@ Ext.define('Hack.controller.Main', {
 			}       		
     	});
     	that.getMain().push(that.newsDetailContainer);
+    	/*
+    	that.getMain().push({
+    		xtype: 'newsDetail',
+    		data: record.getData(),
+			listeners: {
+				painted: function(panel){
+					a = panel;
+					panel.on({
+					   tap: that.popNewsDetail,
+					   delegate: 'div.back'
+					});			        
+				}
+			}    		
+    	});*/     	
     },
     popNewsDetail: function(){
     	that.getMain().pop();
