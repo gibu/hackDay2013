@@ -41,27 +41,9 @@ Ext.application({
         Ext.Viewport.add(Ext.create('Hack.view.Main'));
         /* test JSONP */
 	      Ext.data.JsonP.request({
-	            url: 'http://search.newslist.mobile.onetapi.pl',
+	            url: 'http://search.newslist.mobile.onetapi.pl/?callback=jQuery17205361609025858343_1357825004433&x-onet-app=jsonp.mobile.onetapi.pl&content-type=application%2Fjsonp&body%5Bjsonrpc%5D=2.0&body%5Bid%5D=query_getListSolr1357826636133&body%5Bmethod%5D=searchMoreLikeThis&body%5Bparams%5D%5Boffset%5D=30&body%5Bparams%5D%5Blimit%5D=30&body%5Bparams%5D%5Bid%5D=5a4dd8da-d0ce-4447-9028-d57f97bdb346&body%5Bparams%5D%5BservicePath%5D=styl-zycia.facet&body%5Bparams%5D%5Bqf%5D=topics%5E50&body%5Bparams%5D%5Bfl%5D=title+lead+topics&_=1357826636134',
+	            
 	            callbackKey: 'callback',
-	            params: {
-	                'x-onet-app': 'jsonp.mobile.onetapi.pl',
-	                'content-type': 'application/jsonp',
-	                body:{
-	                	'jsonrpc': '2.0',
-	                	'id': 'query_getListSolr1357825023819',
-	                	'method': 'searchMoreLikeThis',
-	                	'params':{
-	                		'offset': 30,
-	                		'limit': 30,
-	                		'id': '5a4dd8da-d0ce-4447-9028-d57f97bdb346',
-	                		'servicePath': 'styl-zycia.facet',
-	                		'topics': 'topics^50',
-	                		'fl': 'title lead topics'
-	                		 
-	                	}
-	                	
-	                }
-	            },
 	
 	            callback: function(success, result) {
 	                var weather = result.data.weather;
