@@ -64,7 +64,17 @@ Ext.define('Hack.controller.Main', {
 				},
 	            callback: function(success, result) {
 	    			console.log(config);
-	    			that.getLogo().setHtml('<img src="'+config.images.logo.highDpi+'"/>');
+	    			var topHtml = '';
+	    			topHtml += '<img src="'+config.images.logo.highDpi+'"/>';
+	    			topHtml += ' <STYLE type="text/css">'+
+   								'body,.backgroundColor, .x-layout-card-item, .x-html{background-color:#ffffff; color:'+config.colors.text+'}'+
+								'a{color:'+config.colors.link+'}'+
+								'.newsTitle{color:'+config.colors.title+'}'+
+								'.elementTitleText{color:'+config.colors.title+'}'+
+								'.elementTitle{background-color: '+config.colors.background+'}'+
+   								'.backgroundColor{background-color:'+config.colors.background+'}'+
+ 								'</STYLE>';
+	    			that.getLogo().setHtml(topHtml);
 					console.log(that);
 					console.log(result);
 					that.renderLandingPage(that);
@@ -79,24 +89,12 @@ Ext.define('Hack.controller.Main', {
 	           		});
 	           		//console.log(myStore);
 	           		a = myStore.first();
-	           		var tpl = '<div id="data_0" class="firstBigElement listItem"><img src="'+a.data['image']+'" class="newsBigImg"/><span class="newsBigTitle">'+ a.data['title']+'</span><span class="newsBigLead">'+a.data['lead']+'</span></div>';
-	           		x = that.getFirst();
-	           		that.getFirst().add({
-							xtype: 'panel',
-						    html: tpl,
-						    id: 'data_0',
-							listeners: {
-								painted: function(panel){
-									var id = panel.getId().substr(5);
-							        panel.on('tap', that.showDetal,{id: id});
-								}
-							}		           				           				
-	           			}	
-	           		);	
+	           		var tpl = '<div id="data_0" class="firstElement listItem"><img src="'+a.data['image']+'" class="newsImg"/><span class="newsTitle">'+ a.data['title']+'</span></div>';
+
 	           		var r = '';
-	           		for(var i = 1; i < myStore.data.all.length; i++){
+	           		for(var i = 0; i < myStore.data.all.length; i++){
 	           			var element = myStore.data.all[i].data
-	           			r = '<div rel="2" id="data_'+ i +'" class="listElement '+element.type+' listItem"><img src="'+element.image+'" class="newsImg"/><span class="elementTitle">'+element.title+'</span><span class="newsBigLead">'+element.lead+'</span></div>';
+	           			r = '<div rel="2" id="data_'+ i +'" class="listElement '+element.type+' listItem el'+i%2+'"><img src="'+element.image+'" class="newsImg"/><span class="elementTitle"></span><span class="elementTitleText">'+element.title+'</span></div>';
 	           			that.getSecond().add({
 							xtype: 'panel',
 						    html: r,

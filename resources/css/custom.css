@@ -1,5 +1,27 @@
 /*------------------------------- Custom CSS ---------------------------------------*/
 
+.listElement{
+	height:190px;
+}
+.elementTitle{
+	display:block;
+	width:100%;
+	height:36px;
+	line-height:1.5em;
+	top:-42px;
+	position:relative;
+	opacity:0.5;
+}
+.elementTitleText{
+	line-height:1.5em;
+	top:-67px;
+	position:relative;
+	font-weight:bold;
+	padding-left:10%;
+	width:90%;
+	overflow:hidden;
+	white-space:nowrap;
+}
 #landingPage  div{
 	margin: 0px;
 	padding: 0px;
@@ -7,6 +29,27 @@
 }
 
 @media screen and (min-width: 288px){
+      .x-inner, .x-body{
+      	margin:auto;
+      }
+      .listElement{
+      	width:270px;
+      	float:none;
+      	clear:both;
+      	margin:auto;
+      }
+      #logo{
+      	width:270px;
+      	margin:auto;
+      	clear:both;
+      }
+      .listElement img{
+      	width:100%;
+      	height:160px;
+      }
+      .x-panel:nth-child(odd) .listElement{
+
+      }
 		.landingPageImg {
 			width: 100%;
 			height: 480px;
@@ -18,6 +61,23 @@
 }
 
 @media screen and (min-width: 768px){
+      .x-inner, .x-body{
+      	
+      	margin:auto;
+      }
+      .listElement{
+      	width:768px;
+      	float:none;
+      }
+      #logo{
+      	width:768px;
+      }
+      .listElement img{
+      	width:285px;
+      }
+      .listElement.el0{
+
+      }
 	.landingPageImg {
 			height: 1024px;
 		}
