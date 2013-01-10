@@ -81,10 +81,11 @@ Ext.define('Hack.controller.Main', {
 	           		that.getFirst().add({
 							xtype: 'panel',
 						    html: tpl,
+						    id: 'data_0',
 							listeners: {
 								painted: function(panel){
-									
-							        panel.on('tap', that.showDetal);
+									var id = panel.getId().substr(5);
+							        panel.on('tap', that.showDetal,{id: id});
 								}
 							}		           				           				
 	           			}	
@@ -96,9 +97,11 @@ Ext.define('Hack.controller.Main', {
 	           			that.getSecond().add({
 							xtype: 'panel',
 						    html: r,
+						    id: 'news_'+i,
 							listeners: {
-								painted: function(panel){	
-							        panel.on('tap', that.showDetal);
+								painted: function(panel){
+									var id = panel.getId().substr(5);
+							        panel.on('tap', that.showDetal, {id: id});
 								}
 							}		           				           				
 	           			});
@@ -118,7 +121,7 @@ Ext.define('Hack.controller.Main', {
     	});    	
     },
     showDetal: function(e){
-    	var id = e.target.id.substr(5);
+    	var id = this.id;
     	store = Ext.data.StoreManager.lookup('newsStore');
     	var record = store.data.getAt(id);
     	that.getMain().push({
