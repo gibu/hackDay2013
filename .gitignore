@@ -3,3 +3,4 @@ package.rb
 .sencha
 .sencha
 build
+resources/css/app.css

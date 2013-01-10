@@ -22,7 +22,6 @@ Ext.define('Hack.view.Main', {
 		        {
 					xtype: 'panel',
 					id: 'landingPage'
-					
 		        },
 		        {
 				    //layout: 'vbox',

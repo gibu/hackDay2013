@@ -52,7 +52,7 @@ Ext.define('Hack.controller.Main', {
 					'body[method]':'searchMoreLikeThis',
 					'body[params][offset]':30,
 					'body[params][limit]':30,
-					'body[params][id]':'5a4dd8da-d0ce-4447-9028-d57f97bdb346',
+					'body[params][id]':'0cdb3c3b-5ced-4fb6-a56e-fb92a8efdf7e',
 					'body[params][servicePath]':'styl-zycia.facet',
 					'body[params][qf]':'topics^50',
 					'body[params][fl]':'title lead topics',
@@ -65,14 +65,16 @@ Ext.define('Hack.controller.Main', {
 	            callback: function(success, result) {
 	    			console.log(config);
 	    			var topHtml = '';
-	    			topHtml += '<img src="'+config.images.logo.highDpi+'"/>';
+	    			topHtml += '<span id="logoTop"></span>';
 	    			topHtml += ' <STYLE type="text/css">'+
    								'body,.backgroundColor, .x-layout-card-item, .x-html{background-color:#ffffff; color:'+config.colors.text+'}'+
 								'a{color:'+config.colors.link+'}'+
-								'.newsTitle{color:'+config.colors.title+'}'+
-								'.elementTitleText, #newsDetail h1 {color:'+config.colors.title+'}'+
+								'.newsTitle {color:'+config.colors.link+'}'+
 								'#newsDetail p {color:'+config.colors.text+'}'+
-								'.elementTitle {background-color: '+config.colors.background+'}'+
+								'#logo{background-color:'+config.colors.background+'}'+
+								'.elementTitleText, #newsDetail h1 {color:'+config.colors.title+'}'+
+								'.elementTitle{background-color: '+config.colors.background+'}'+
+
    								'.backgroundColor{background-color:'+config.colors.background+'}'+
  								'</STYLE>';
 	    			that.getLogo().setHtml(topHtml);
@@ -114,8 +116,8 @@ Ext.define('Hack.controller.Main', {
     },
 	renderLandingPage: function(){
 		var _html = '<div class="landingPageImg"></div><style>';
-		_html += '@media screen and (min-width: 288px){.landingPageImg {background: url("'+config.images.landing.smartphone.highDpi+'")}}';
-		_html += '@media screen and (min-width: 768px){.landingPageImg {background: url("'+config.images.landing.tablet.highDpi+'")}}</style>';
+		_html += '@media screen and (min-width: 288px){.landingPageImg {background: url("'+config.images.landing.smartphone.highDpi+'"); width: 288px;}#logoTop{background:url("'+config.images.logo.lowDpi+'") center no-repeat}}';
+		_html += '@media screen and (min-width: 768px){.landingPageImg {background: url("'+config.images.landing.tablet.highDpi+'"); width: 768px;}#logoTop{background:url("'+config.images.logo.lowDpi+'") center no-repeat}}</style>';
 		_html += '</style>';
 		this.getLandingPage().setHtml(_html);          
 	},
