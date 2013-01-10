@@ -1,12 +1,10 @@
 Ext.define("Hack.store.Feed", {
     extend: 'Ext.data.Store',
+    requires: [
+    	'Ext.data.proxy.JsonP'
+    ],
     config: {	
         model: 'Hack.model.News',
-        autoLoad: 'false',
-		proxy : {
-			type : 'jsonp',
-			url : 'http://search.newslist.mobile.onetapi.pl',
-			callback: 'callback'
-		}
-	}  
+        autoLoad: false,       
+	}	  
 });

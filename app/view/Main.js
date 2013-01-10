@@ -20,7 +20,12 @@ Ext.define('Hack.view.Main', {
 		
 		    items: [
 		        {
-					'html': 'test'				
+		        	id: 'feed',
+	                styleHtmlContent: true,
+	                scrollable: true,
+	                xtype: 'list',
+	                itemTpl: '<div class="test">{title}</div><img src="{image}" />',              
+	                id: 'feed'			
 		        },
 		        {
 		            html : 'Item 2',
