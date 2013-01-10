@@ -76,7 +76,7 @@ Ext.define('Hack.controller.Main', {
 	           		});
 	           		//console.log(myStore);
 	           		a = myStore.first();
-	           		var tpl = '<div id="data_0" class="firstBigElement listItem"><img src="'+a.data['image']+'" class="newsBigImg"/><span class="newsBigTitle">'+ a.data['title']+'</span><span class="newsBigLead">'+a.data['lead']+'</span></div>';
+	           		var tpl = '<div id="data_0" class="firstBigElement listItem"><img src="'+a.data['image']+'" class="newsBigImg"/><span class="newsBigTitle">'+ a.data['title']+'</span></div>';
 	           		x = that.getFirst();
 	           		that.getFirst().add({
 							xtype: 'panel',
