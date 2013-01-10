@@ -80,7 +80,9 @@ Ext.application({
 	                var weather = result.data.weather;
 					console.log(result);
 	            }
-	        });       
+	        });  
+	        
+	             
     },
 
     onUpdated: function() {
