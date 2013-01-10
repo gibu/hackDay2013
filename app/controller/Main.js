@@ -19,6 +19,14 @@ Ext.define('Hack.controller.Main', {
         	},
         	listItem:{
         		tap: 'clickItem'
+        	},
+        	main:{
+        		pop: function(current,prevoiusView){
+        			
+        			if(prevoiusView.id == "newsDetail"){
+        				prevoiusView.destroy();
+        			}
+        		}
         	}
         }      
     },
@@ -126,6 +134,20 @@ Ext.define('Hack.controller.Main', {
     	var id = this.id;
     	store = Ext.data.StoreManager.lookup('newsStore');
     	var record = store.data.getAt(id);
+    	that.newsDetailContainer = Ext.create('Hack.view.NewsDetail',{
+    		data: record.getData(),
+			listeners: {
+				painted: function(panel){
+					a = panel;
+					panel.on({
+					   tap: that.popNewsDetail,
+					   delegate: 'div.back'
+					});			        
+				}
+			}       		
+    	});
+    	that.getMain().push(that.newsDetailContainer);
+    	/*
     	that.getMain().push({
     		xtype: 'newsDetail',
     		data: record.getData(),
@@ -134,13 +156,14 @@ Ext.define('Hack.controller.Main', {
 					a = panel;
 					panel.on({
 					   tap: that.popNewsDetail,
-					   delegate: '.back'
+					   delegate: 'div.back'
 					});			        
 				}
 			}    		
-    	});     	
+    	});*/     	
     },
     popNewsDetail: function(){
     	that.getMain().pop();
+    	//that.newsDetailContainer.destroy();
     }
 });
