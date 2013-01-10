@@ -20,9 +20,14 @@ Ext.define('Hack.view.Main', {
 		
 		    items: [
 		        {
+		            html : 'Item 2',
+		            style: 'background-color: #759E60'
+		        },
+		        {
 				    //layout: 'vbox',
 				    xtype: 'panel',
 				    scrollable: true,
+				    id: 'listContainer',
 				    items: [
 				        {
 				            xtype: 'panel',
@@ -39,7 +44,7 @@ Ext.define('Hack.view.Main', {
 				        {
 				            xtype: 'panel',
 				            id: 'second',
-				            html: 'tu b�dzie lista',
+				            html: 'tu będzie lista',
 				            flex: 3
 				        }				        
 				    ]		        	
@@ -50,11 +55,7 @@ Ext.define('Hack.view.Main', {
 	                xtype: 'list',
 	                itemTpl: '<div class="listElement"><img src="image" class=""/>{title}</div>',              
 	                id: 'feed' */			
-		        },
-		        {
-		            html : 'Item 2',
-		            style: 'background-color: #759E60'
-		        },
+		        },		        
 		        {
 		            html : 'Item 3'
 		        }

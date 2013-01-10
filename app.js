@@ -14,7 +14,7 @@ Ext.application({
     controllers: ['Main'],
 	models: ['News'],
     stores: ['Feed'],	
-    views: ['Main'],
+    views: ['Main','NewsDetail'],
 
     icon: {
         '57': 'resources/icons/Icon.png',

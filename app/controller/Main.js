@@ -4,6 +4,9 @@ Ext.define('Hack.controller.Main', {
         refs: {
         	feed: '#feed',
         	first: '#first',
+        	main: 'main',
+        	listItem: '#listNews .listItem',
+        	listContainer: '#listContainer',
         	second: '#second',
         	logo: '#logo',
         	main: 'main'
@@ -11,6 +14,9 @@ Ext.define('Hack.controller.Main', {
         control: {
         	feed: {
         		itemtap: 'showNews'
+        	},
+        	listItem:{
+        		tap: 'clickItem'
         	}
         }      
     },
@@ -53,31 +59,36 @@ Ext.define('Hack.controller.Main', {
 					//console.log(weather);
 					//console.log(that.getFeed());
 					var myStore = Ext.create("Ext.data.Store", {
-					    storeId: "usersStore",
+					    storeId: "newsStore",
 					    model: "Hack.model.News",
 					    data : weather			
 	           		});
 	           		//console.log(myStore);
 	           		a = myStore.first();
-	           		var tpl = '<div class="firstBigElement"><img src="'+a.data['image']+'" class="newsBigImg"/><span class="newsBigTitle">'+ a.data['title']+'</span><span class="newsBigLead">'+a.data['lead']+'</span></div>';
+	           		var tpl = '<div class="firstBigElement listItem"><img src="'+a.data['image']+'" class="newsBigImg"/><span class="newsBigTitle">'+ a.data['title']+'</span><span class="newsBigLead">'+a.data['lead']+'</span></div>';
+	           		x = that.getFirst();
 	           		that.getFirst().setHtml(tpl);
 	           		var r = '';
 	           		for(var i = 1; i < myStore.data.all.length; i++){
-	           			var element = myStore.data.all[i].data;
-	           			/*var width = 100;
-	           			var height = 100;
-	           			var imgCode = '06'+width.toString(16)+height.toString(16); 
-	           			var checksum = Crypto.md5(name + transStr + OcdnTransformation.OCDN_KEY);
-					    var buff = new Buffer(checksum.substr(0,2) + ';' + transStr );
-					    var base = buff.toString('base64');
-					    var ret = base.replace(/=/g, '_');*/
-	           			//console.log(element);
-	           			r += '<div class="listElement '+element.type+'"><img src="'+element.image+'" class="newsImg"/><span class="elementTitle">'+element.title+'</span><span class="newsBigLead">'+element.lead+'</span></div>';
+	           			var element = myStore.data.all[i].data
+	           			r = '<div rel="2" id="data_'+ i +'" class="listElement '+element.type+' listItem"><img src="'+element.image+'" class="newsImg"/><span class="elementTitle">'+element.title+'</span><span class="newsBigLead">'+element.lead+'</span></div>';
+	           			that.getSecond().add({
+							xtype: 'panel',
+						    html: r,
+							listeners: {
+								painted: function(panel){
+									
+							        panel.on('tap', that.showDetal);
+								}
+							}		           				           				
+	           			});
+	           			
 	           		}
-	           		that.getSecond().setHtml(r);
-	           		//that.getFeed().setStore(myStore);
 	            }
 	    });      	
+    },
+    clickItem: function(){
+    	console.log("clickItem");
     },
     showNews: function(list,index,target, record){
     	this.getMain().push({
@@ -85,5 +96,15 @@ Ext.define('Hack.controller.Main', {
     		title: record.data.title.slice(0,20),
     		data: record.getData()
     	});    	
+    },
+    showDetal: function(e){
+    	var id = e.target.id.substr(5);
+    	store = Ext.data.StoreManager.lookup('newsStore');
+    	var record = store.data.getAt(id);
+    	that.getMain().push({
+    		xtype: 'newsDetail',
+    		title: record.data.title.slice(0,20),
+    		data: record.getData()
+    	});     	
     }
 });
