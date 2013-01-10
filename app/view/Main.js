@@ -26,6 +26,7 @@ Ext.define('Hack.view.Main', {
 				    items: [
 				        {
 				            xtype: 'panel',
+				            id: 'logo',
 				            html: 'miejsce na nasze logo',
 				            flex: 1
 				        },
@@ -38,7 +39,7 @@ Ext.define('Hack.view.Main', {
 				        {
 				            xtype: 'panel',
 				            id: 'second',
-				            html: 'tu bêdzie lista',
+				            html: 'tu bï¿½dzie lista',
 				            flex: 3
 				        }				        
 				    ]		        	

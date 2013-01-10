@@ -5,6 +5,7 @@ Ext.define('Hack.controller.Main', {
         	feed: '#feed',
         	first: '#first',
         	second: '#second',
+        	logo: '#logo',
         	main: 'main'
         },
         control: {
@@ -47,6 +48,7 @@ Ext.define('Hack.controller.Main', {
 				},
 	            callback: function(success, result) {
 	    			console.log(config);
+	    			that.getLogo().setHtml('<img src="'+config.images.logo.highDpi+'"/>');
 	                var weather = result.result.elements;
 					//console.log(weather);
 					//console.log(that.getFeed());
