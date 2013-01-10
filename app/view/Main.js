@@ -20,8 +20,9 @@ Ext.define('Hack.view.Main', {
 		
 		    items: [
 		        {
-		            html : 'Item 2',
-		            style: 'background-color: #759E60'
+					xtype: 'panel',
+					id: 'landingPage'
+					
 		        },
 		        {
 				    //layout: 'vbox',

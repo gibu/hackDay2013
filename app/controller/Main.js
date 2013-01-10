@@ -9,7 +9,8 @@ Ext.define('Hack.controller.Main', {
         	listContainer: '#listContainer',
         	second: '#second',
         	logo: '#logo',
-        	main: 'main'
+        	main: 'main',
+        	landingPage: '#landingPage'
         },
         control: {
         	feed: {
@@ -55,7 +56,11 @@ Ext.define('Hack.controller.Main', {
 	            callback: function(success, result) {
 	    			console.log(config);
 	    			that.getLogo().setHtml('<img src="'+config.images.logo.highDpi+'"/>');
-	                var weather = result.result.elements;
+					console.log(that);
+					console.log(result);
+					that.renderLandingPage(that);
+					
+					var weather = result.result.elements;
 					//console.log(weather);
 					//console.log(that.getFeed());
 					var myStore = Ext.create("Ext.data.Store", {
@@ -87,6 +92,13 @@ Ext.define('Hack.controller.Main', {
 	            }
 	    });      	
     },
+	renderLandingPage: function(){
+		var _html = '<div class="landingPageImg"></div><style>';
+		_html += '@media screen and (min-width: 288px){.landingPageImg {background: url("'+config.images.landing.smartphone.highDpi+'")}}';
+		_html += '@media screen and (min-width: 768px){.landingPageImg {background: url("'+config.images.landing.tablet.highDpi+'")}}</style>';
+		_html += '</style>';
+		this.getLandingPage().setHtml(_html);          
+	},
     clickItem: function(){
     	console.log("clickItem");
     },
@@ -99,11 +111,12 @@ Ext.define('Hack.controller.Main', {
     },
     showDetal: function(e){
     	var id = e.target.id.substr(5);
+		console.log(id);
     	store = Ext.data.StoreManager.lookup('newsStore');
     	var record = store.data.getAt(id);
     	that.getMain().push({
     		xtype: 'newsDetail',
-    		title: record.data.title.slice(0,20),
+    	//	title: record.data.title.slice(0,20),
     		data: record.getData()
     	});     	
     }
