@@ -15,6 +15,13 @@ Ext.define('Hack.controller.Main', {
     },
     launch: function(){
     	that = this;
+    	config = null;
+    	Ext.util.JSONP.request({
+		  url: 'conf.js',
+		  callbackKey: 'callback',
+		  callback: function( success, data ) { console.log(data);  config = data;}
+		});
+
 	    Ext.data.JsonP.request({
 	            url: 'http://search.newslist.mobile.onetapi.pl/',
 	            
@@ -39,10 +46,10 @@ Ext.define('Hack.controller.Main', {
 					rootProperty: 'result.elements'
 				},
 	            callback: function(success, result) {
-	    			//console.log(result);
+	    			console.log(config);
 	                var weather = result.result.elements;
-					console.log(weather);
-					console.log(that.getFeed());
+					//console.log(weather);
+					//console.log(that.getFeed());
 					var myStore = Ext.create("Ext.data.Store", {
 					    storeId: "usersStore",
 					    model: "Hack.model.News",
@@ -54,8 +61,15 @@ Ext.define('Hack.controller.Main', {
 	           		that.getFirst().setHtml(tpl);
 	           		var r = '';
 	           		for(var i = 1; i < myStore.data.all.length; i++){
-	           			var element = myStore.data.all[i].data
-	           			console.log(element);
+	           			var element = myStore.data.all[i].data;
+	           			/*var width = 100;
+	           			var height = 100;
+	           			var imgCode = '06'+width.toString(16)+height.toString(16); 
+	           			var checksum = Crypto.md5(name + transStr + OcdnTransformation.OCDN_KEY);
+					    var buff = new Buffer(checksum.substr(0,2) + ';' + transStr );
+					    var base = buff.toString('base64');
+					    var ret = base.replace(/=/g, '_');*/
+	           			//console.log(element);
 	           			r += '<div class="listElement '+element.type+'"><img src="'+element.image+'" class="newsImg"/><span class="elementTitle">'+element.title+'</span><span class="newsBigLead">'+element.lead+'</span></div>';
 	           		}
 	           		that.getSecond().setHtml(r);
