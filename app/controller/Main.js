@@ -48,12 +48,15 @@ Ext.define('Hack.controller.Main', {
 					    model: "Hack.model.News",
 					    data : weather			
 	           		});
+	           		//console.log(myStore);
 	           		a = myStore.first();
-	           		var tpl = '<div class="test">'+ a.data['title']+'</div>';
+	           		var tpl = '<div class="firstBigElement"><img src="'+a.data['image']+'" class="newsBigImg"/><span class="newsBigTitle">'+ a.data['title']+'</span><span class="newsBigLead">'+a.data['lead']+'</span></div>';
 	           		that.getFirst().setHtml(tpl);
 	           		var r = '';
-	           		for(var i = 0; i < 10; i++){
-	           			r += '<div style="width: 100%; height: 200px; background-color: #fff;">tetet</div>';
+	           		for(var i = 1; i < myStore.data.all.length; i++){
+	           			var element = myStore.data.all[i].data
+	           			console.log(element);
+	           			r += '<div class="listElement '+element.type+'"><img src="'+element.image+'" class="newsImg"/><span class="elementTitle">'+element.title+'</span><span class="newsBigLead">'+element.lead+'</span></div>';
 	           		}
 	           		that.getSecond().setHtml(r);
 	           		//that.getFeed().setStore(myStore);
