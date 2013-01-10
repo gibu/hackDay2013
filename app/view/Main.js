@@ -38,13 +38,13 @@ Ext.define('Hack.view.Main', {
 				        {
 				            xtype: 'panel',
 				            id: 'first',
-				            html: 'message preview',
+				            html: '',
 				            flex: 2
 				        },
 				        {
 				            xtype: 'panel',
 				            id: 'second',
-				            html: 'tu będzie lista',
+				            html: '',
 				            flex: 3
 				        }				        
 				    ]		        	

@@ -25,12 +25,13 @@
 
 @media screen and (min-width: 288px){
       .x-inner, .x-body{
-      	width:288px;
       	margin:auto;
       }
       .listElement{
       	width:270px;
-      	float:left;
+      	float:none;
+      	clear:both;
+      	margin:auto;
       }
       .listElement img{
       	width:100%;
@@ -52,7 +53,7 @@
       }
       .listElement{
       	width:285px;
-      	float:left;
+      	float:none;
       }
       .listElement img{
       	width:285px;
