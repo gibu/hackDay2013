@@ -3,6 +3,7 @@
 .listElement{
 	height:190px;
 }
+
 .x-panel:nth-child(1) .listElement{
 	marin-top:100px;
 }
@@ -14,6 +15,9 @@
 	top:-42px;
 	position:relative;
 	opacity:0.5;
+}
+#second{
+	margin-top:70px;
 }
 .elementTitleText{
 	line-height:1.5em;
