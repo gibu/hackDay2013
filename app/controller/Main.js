@@ -36,7 +36,7 @@ Ext.define('Hack.controller.Main', {
     	Ext.util.JSONP.request({
 		  url: 'conf.js',
 		  callbackKey: 'callback',
-		  callback: function( success, data ) { console.log(data);  config = data;}
+		  callback: function( success, data ) {config = data;}
 		});
 
 	    Ext.data.JsonP.request({
@@ -65,8 +65,8 @@ Ext.define('Hack.controller.Main', {
 	            callback: function(success, result) {
 	    			console.log(config);
 	    			that.getLogo().setHtml('<img src="'+config.images.logo.highDpi+'"/>');
-					console.log(that);
-					console.log(result);
+					//console.log(that);
+					//console.log(result);
 					that.renderLandingPage(that);
 					
 					var weather = result.result.elements;
@@ -79,7 +79,7 @@ Ext.define('Hack.controller.Main', {
 	           		});
 	           		//console.log(myStore);
 	           		a = myStore.first();
-	           		var tpl = '<div id="data_0" class="firstBigElement listItem"><img src="'+a.data['image']+'" class="newsBigImg"/><span class="newsBigTitle">'+ a.data['title']+'</span><span class="newsBigLead">'+a.data['lead']+'</span></div>';
+	           		var tpl = '<div id="data_0" class="firstElement listItem"><img src="'+a.data['image']+'" class="newsImg"/><span class="newsTitle">'+ a.data['title']+'</span></div>';
 	           		x = that.getFirst();
 	           		that.getFirst().add({
 							xtype: 'panel',
@@ -96,7 +96,7 @@ Ext.define('Hack.controller.Main', {
 	           		var r = '';
 	           		for(var i = 1; i < myStore.data.all.length; i++){
 	           			var element = myStore.data.all[i].data
-	           			r = '<div rel="2" id="data_'+ i +'" class="listElement '+element.type+' listItem"><img src="'+element.image+'" class="newsImg"/><span class="elementTitle">'+element.title+'</span><span class="newsBigLead">'+element.lead+'</span></div>';
+	           			r = '<div rel="2" id="data_'+ i +'" class="listElement '+element.type+' listItem el'+i%2+'"><img src="'+element.image+'" class="newsImg"/><span class="elementTitle"></span><span class="elementTitleText">'+element.title+'</span></div>';
 	           			that.getSecond().add({
 							xtype: 'panel',
 						    html: r,
