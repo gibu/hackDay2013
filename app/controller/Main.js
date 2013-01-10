@@ -69,10 +69,12 @@ Ext.define('Hack.controller.Main', {
 	    			topHtml += ' <STYLE type="text/css">'+
    								'body,.backgroundColor, .x-layout-card-item, .x-html{background-color:#ffffff; color:'+config.colors.text+'}'+
 								'a{color:'+config.colors.link+'}'+
-								'.newsTitle{color:'+config.colors.link+'}'+
+								'.newsTitle {color:'+config.colors.link+'}'+
+								'#newsDetail p {color:'+config.colors.text+'}'+
 								'#logo{background-color:'+config.colors.background+'}'+
 								'.elementTitleText{color:'+config.colors.link+'}'+
 								'.elementTitle{background-color: '+config.colors.background+'}'+
+
    								'.backgroundColor{background-color:'+config.colors.background+'}'+
  								'</STYLE>';
 	    			that.getLogo().setHtml(topHtml);
@@ -116,8 +118,8 @@ Ext.define('Hack.controller.Main', {
     },
 	renderLandingPage: function(){
 		var _html = '<div class="landingPageImg"></div><style>';
-		_html += '@media screen and (min-width: 288px){.landingPageImg {background: url("'+config.images.landing.smartphone.highDpi+'")}#logoTop{background:url("'+config.images.logo.lowDpi+'") center no-repeat}}';
-		_html += '@media screen and (min-width: 768px){.landingPageImg {background: url("'+config.images.landing.tablet.highDpi+'")}#logoTop{background:url("'+config.images.logo.lowDpi+'") center no-repeat}}</style>';
+		_html += '@media screen and (min-width: 288px){.landingPageImg {background: url("'+config.images.landing.smartphone.highDpi+'"); width: 288px;}#logoTop{background:url("'+config.images.logo.lowDpi+'") center no-repeat}}';
+		_html += '@media screen and (min-width: 768px){.landingPageImg {background: url("'+config.images.landing.tablet.highDpi+'"); width: 768px;}#logoTop{background:url("'+config.images.logo.lowDpi+'") center no-repeat}}</style>';
 		_html += '</style>';
 		this.getLandingPage().setHtml(_html);          
 	},
@@ -125,6 +127,8 @@ Ext.define('Hack.controller.Main', {
     	console.log("clickItem");
     },
     showNews: function(list,index,target, record){
+		console.log('data'+record.data);
+		console.log('getData'+record.getData());
     	this.getMain().push({
     		xtype: 'newsDetail',
     		title: record.data.title.slice(0,20),
@@ -135,6 +139,7 @@ Ext.define('Hack.controller.Main', {
     	var id = this.id;
     	store = Ext.data.StoreManager.lookup('newsStore');
     	var record = store.data.getAt(id);
+		console.log(record.getData());
     	that.newsDetailContainer = Ext.create('Hack.view.NewsDetail',{
     		data: record.getData(),
 			listeners: {
