@@ -147,23 +147,8 @@ Ext.define('Hack.controller.Main', {
 			}       		
     	});
     	that.getMain().push(that.newsDetailContainer);
-    	/*
-    	that.getMain().push({
-    		xtype: 'newsDetail',
-    		data: record.getData(),
-			listeners: {
-				painted: function(panel){
-					a = panel;
-					panel.on({
-					   tap: that.popNewsDetail,
-					   delegate: 'div.back'
-					});			        
-				}
-			}    		
-    	});*/     	
     },
     popNewsDetail: function(){
     	that.getMain().pop();
-    	//that.newsDetailContainer.destroy();
     }
 });
