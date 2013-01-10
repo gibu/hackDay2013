@@ -70,8 +70,9 @@ Ext.define('Hack.controller.Main', {
    								'body,.backgroundColor, .x-layout-card-item, .x-html{background-color:#ffffff; color:'+config.colors.text+'}'+
 								'a{color:'+config.colors.link+'}'+
 								'.newsTitle{color:'+config.colors.title+'}'+
-								'.elementTitleText{color:'+config.colors.title+'}'+
-								'.elementTitle{background-color: '+config.colors.background+'}'+
+								'.elementTitleText, #newsDetail h1 {color:'+config.colors.title+'}'+
+								'#newsDetail p {color:'+config.colors.text+'}'+
+								'.elementTitle {background-color: '+config.colors.background+'}'+
    								'.backgroundColor{background-color:'+config.colors.background+'}'+
  								'</STYLE>';
 	    			that.getLogo().setHtml(topHtml);
