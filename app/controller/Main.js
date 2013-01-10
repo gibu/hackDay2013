@@ -71,7 +71,7 @@ Ext.define('Hack.controller.Main', {
 								'a{color:'+config.colors.link+'}'+
 								'.newsTitle{color:'+config.colors.link+'}'+
 								'#logo{background-color:'+config.colors.background+'}'+
-								'.elementTitleText{color:'+config.colors.title+'}'+
+								'.elementTitleText{color:'+config.colors.link+'}'+
 								'.elementTitle{background-color: '+config.colors.background+'}'+
    								'.backgroundColor{background-color:'+config.colors.background+'}'+
  								'</STYLE>';
@@ -94,7 +94,8 @@ Ext.define('Hack.controller.Main', {
 
 	           		var r = '';
 	           		for(var i = 0; i < myStore.data.all.length; i++){
-	           			var element = myStore.data.all[i].data
+	           			var element = myStore.data.all[i].data;
+	           			if(element.image){
 	           			r = '<div rel="2" id="data_'+ i +'" class="listElement '+element.type+' listItem el'+i%2+'"><img src="'+element.image+'" class="newsImg"/><span class="elementTitle"></span><span class="elementTitleText">'+element.title+'</span></div>';
 	           			that.getSecond().add({
 							xtype: 'panel',
@@ -107,6 +108,7 @@ Ext.define('Hack.controller.Main', {
 								}
 							}		           				           				
 	           			});
+	           			}
 	           			
 	           		}
 	            }
