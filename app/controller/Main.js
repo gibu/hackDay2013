@@ -3,6 +3,8 @@ Ext.define('Hack.controller.Main', {
     config: {
         refs: {
         	feed: '#feed',
+        	first: '#first',
+        	second: '#second',
         	main: 'main'
         },
         control: {
@@ -46,7 +48,15 @@ Ext.define('Hack.controller.Main', {
 					    model: "Hack.model.News",
 					    data : weather			
 	           		});
-	           		that.getFeed().setStore(myStore);
+	           		a = myStore.first();
+	           		var tpl = '<div class="test">'+ a.data['title']+'</div>';
+	           		that.getFirst().setHtml(tpl);
+	           		var r = '';
+	           		for(var i = 0; i < 10; i++){
+	           			r += '<div style="width: 100%; height: 200px; background-color: #fff;">tetet</div>';
+	           		}
+	           		that.getSecond().setHtml(r);
+	           		//that.getFeed().setStore(myStore);
 	            }
 	    });      	
     },

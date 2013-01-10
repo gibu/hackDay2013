@@ -20,12 +20,35 @@ Ext.define('Hack.view.Main', {
 		
 		    items: [
 		        {
+				    layout: 'vbox',
+				    xtype: 'panel',
+				    scrollable: true,
+				    items: [
+				        {
+				            xtype: 'panel',
+				            html: 'miejsce na nasze logo',
+				            flex: 1
+				        },
+				        {
+				            xtype: 'panel',
+				            id: 'first',
+				            html: 'message preview',
+				            flex: 2
+				        },
+				        {
+				            xtype: 'panel',
+				            id: 'second',
+				            html: 'tu bêdzie lista',
+				            flex: 3
+				        }				        
+				    ]		        	
+		        	/*
 		        	id: 'feed',
 	                styleHtmlContent: true,
 	                scrollable: true,
 	                xtype: 'list',
 	                itemTpl: '<div class="listElement"><img src="image" class=""/>{title}</div>',              
-	                id: 'feed'			
+	                id: 'feed' */			
 		        },
 		        {
 		            html : 'Item 2',
