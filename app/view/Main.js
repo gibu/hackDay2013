@@ -20,7 +20,7 @@ Ext.define('Hack.view.Main', {
 		
 		    items: [
 		        {
-					
+					'html': 'test'				
 		        },
 		        {
 		            html : 'Item 2',

@@ -12,8 +12,8 @@ Ext.application({
         'Ext.MessageBox'
     ],
 	models: ['News'],
+    stores: ['Feed'],	
     views: ['Main'],
-    store: ['Feed'],
 
     icon: {
         '57': 'resources/icons/Icon.png',
@@ -39,6 +39,35 @@ Ext.application({
 
         // Initialize the main view
         Ext.Viewport.add(Ext.create('Hack.view.Main'));
+        /* test JSONP */
+	      Ext.data.JsonP.request({
+	            url: 'http://search.newslist.mobile.onetapi.pl',
+	            callbackKey: 'callback',
+	            params: {
+	                'x-onet-app': 'jsonp.mobile.onetapi.pl',
+	                'content-type': 'application/jsonp',
+	                body:{
+	                	'jsonrpc': '2.0',
+	                	'id': 'query_getListSolr1357825023819',
+	                	'method': 'searchMoreLikeThis',
+	                	'params':{
+	                		'offset': 30,
+	                		'limit': 30,
+	                		'id': '5a4dd8da-d0ce-4447-9028-d57f97bdb346',
+	                		'servicePath': 'styl-zycia.facet',
+	                		'topics': 'topics^50',
+	                		'fl': 'title lead topics'
+	                		 
+	                	}
+	                	
+	                }
+	            },
+	
+	            callback: function(success, result) {
+	                var weather = result.data.weather;
+					console.log(result);
+	            }
+	        });       
     },
 
     onUpdated: function() {
