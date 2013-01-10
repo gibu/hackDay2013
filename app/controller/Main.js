@@ -115,7 +115,7 @@ Ext.define('Hack.controller.Main', {
 	renderLandingPage: function(){
 		var _html = '<div class="landingPageImg"></div><style>';
 		_html += '@media screen and (min-width: 288px){.landingPageImg {background: url("'+config.images.landing.smartphone.highDpi+'")}#logoTop{background:url("'+config.images.logo.lowDpi+'") center no-repeat}}';
-		_html += '@media screen and (min-width: 768px){.landingPageImg {background: url("'+config.images.landing.tablet.highDpi+'")}#logoTop{background:url("'+config.images.logo.lowDpi+'")} center np-repeat}</style>';
+		_html += '@media screen and (min-width: 768px){.landingPageImg {background: url("'+config.images.landing.tablet.highDpi+'")}#logoTop{background:url("'+config.images.logo.lowDpi+'") center no-repeat}}</style>';
 		_html += '</style>';
 		this.getLandingPage().setHtml(_html);          
 	},
