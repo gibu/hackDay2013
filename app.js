@@ -11,8 +11,9 @@ Ext.application({
     requires: [
         'Ext.MessageBox'
     ],
-
+	models: ['News'],
     views: ['Main'],
+    store: ['Feed'],
 
     icon: {
         '57': 'resources/icons/Icon.png',
