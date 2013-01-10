@@ -10,7 +10,8 @@ Ext.define('Hack.controller.Main', {
         	second: '#second',
         	logo: '#logo',
         	main: 'main',
-        	landingPage: '#landingPage'
+        	landingPage: '#landingPage',
+        	newsDetail: '#newsDetail'
         },
         control: {
         	feed: {
@@ -70,9 +71,20 @@ Ext.define('Hack.controller.Main', {
 	           		});
 	           		//console.log(myStore);
 	           		a = myStore.first();
-	           		var tpl = '<div class="firstBigElement listItem"><img src="'+a.data['image']+'" class="newsBigImg"/><span class="newsBigTitle">'+ a.data['title']+'</span><span class="newsBigLead">'+a.data['lead']+'</span></div>';
+	           		var tpl = '<div id="data_0" class="firstBigElement listItem"><img src="'+a.data['image']+'" class="newsBigImg"/><span class="newsBigTitle">'+ a.data['title']+'</span><span class="newsBigLead">'+a.data['lead']+'</span></div>';
 	           		x = that.getFirst();
-	           		that.getFirst().setHtml(tpl);
+	           		that.getFirst().add({
+							xtype: 'panel',
+						    html: tpl,
+						    id: 'data_0',
+							listeners: {
+								painted: function(panel){
+									var id = panel.getId().substr(5);
+							        panel.on('tap', that.showDetal,{id: id});
+								}
+							}		           				           				
+	           			}	
+	           		);	
 	           		var r = '';
 	           		for(var i = 1; i < myStore.data.all.length; i++){
 	           			var element = myStore.data.all[i].data
@@ -80,10 +92,11 @@ Ext.define('Hack.controller.Main', {
 	           			that.getSecond().add({
 							xtype: 'panel',
 						    html: r,
+						    id: 'news_'+i,
 							listeners: {
 								painted: function(panel){
-									
-							        panel.on('tap', that.showDetal);
+									var id = panel.getId().substr(5);
+							        panel.on('tap', that.showDetal, {id: id});
 								}
 							}		           				           				
 	           			});
@@ -110,14 +123,24 @@ Ext.define('Hack.controller.Main', {
     	});    	
     },
     showDetal: function(e){
-    	var id = e.target.id.substr(5);
-		console.log(id);
+    	var id = this.id;
     	store = Ext.data.StoreManager.lookup('newsStore');
     	var record = store.data.getAt(id);
     	that.getMain().push({
     		xtype: 'newsDetail',
-    	//	title: record.data.title.slice(0,20),
-    		data: record.getData()
+    		data: record.getData(),
+			listeners: {
+				painted: function(panel){
+					a = panel;
+					panel.on({
+					   tap: that.popNewsDetail,
+					   delegate: '.back'
+					});			        
+				}
+			}    		
     	});     	
+    },
+    popNewsDetail: function(){
+    	that.getMain().pop();
     }
 });
