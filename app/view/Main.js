@@ -20,7 +20,7 @@ Ext.define('Hack.view.Main', {
 		
 		    items: [
 		        {
-				    layout: 'vbox',
+				    //layout: 'vbox',
 				    xtype: 'panel',
 				    scrollable: true,
 				    items: [
