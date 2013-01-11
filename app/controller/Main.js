@@ -72,7 +72,7 @@ Ext.define('Hack.controller.Main', {
 								'.newsTitle {color:'+config.colors.link+'}'+
 								'#newsDetail p {color:'+config.colors.text+'}'+
 								'#logo{background-color:'+config.colors.background+'}'+
-								'.elementTitleText, #newsDetail h1 {color:'+config.colors.title+'}'+
+								'.elementTitleText{color:'+config.colors.link+'}'+
 								'.elementTitle{background-color: '+config.colors.background+'}'+
 
    								'.backgroundColor{background-color:'+config.colors.background+'}'+
@@ -96,7 +96,8 @@ Ext.define('Hack.controller.Main', {
 
 	           		var r = '';
 	           		for(var i = 0; i < myStore.data.all.length; i++){
-	           			var element = myStore.data.all[i].data
+	           			var element = myStore.data.all[i].data;
+	           			if(element.image){
 	           			r = '<div rel="2" id="data_'+ i +'" class="listElement '+element.type+' listItem el'+i%2+'"><img src="'+element.image+'" class="newsImg"/><span class="elementTitle"></span><span class="elementTitleText">'+element.title+'</span></div>';
 	           			that.getSecond().add({
 							xtype: 'panel',
@@ -109,6 +110,7 @@ Ext.define('Hack.controller.Main', {
 								}
 							}		           				           				
 	           			});
+	           			}
 	           			
 	           		}
 	            }
@@ -116,7 +118,7 @@ Ext.define('Hack.controller.Main', {
     },
 	renderLandingPage: function(){
 		var _html = '<div class="landingPageImg"></div><style>';
-		_html += '@media screen and (min-width: 288px){.landingPageImg {background: url("'+config.images.landing.smartphone.highDpi+'"); width: 288px;}#logoTop{background:url("'+config.images.logo.lowDpi+'") center no-repeat}}';
+		_html += '@media screen and (min-width: 288px){.landingPageImg {background: url("'+config.images.landing.smartphone.highDpi+'") center top;}#logoTop{background:url("'+config.images.logo.lowDpi+'") center no-repeat}}';
 		_html += '@media screen and (min-width: 768px){.landingPageImg {background: url("'+config.images.landing.tablet.highDpi+'"); width: 768px;}#logoTop{background:url("'+config.images.logo.lowDpi+'") center no-repeat}}</style>';
 		_html += '</style>';
 		this.getLandingPage().setHtml(_html);          
