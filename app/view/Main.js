@@ -40,13 +40,13 @@ Ext.define('Hack.view.Main', {
 				            id: 'first',
 				            html: '',
 				            flex: 2
-				        },
+				        }/*,
 				        {
 				            xtype: 'panel',
 				            id: 'second',
 				            html: '',
 				            flex: 3
-				        }				        
+				        }*/				        
 				    ]		        	
 		        	/*
 		        	id: 'feed',
@@ -57,7 +57,7 @@ Ext.define('Hack.view.Main', {
 	                id: 'feed' */			
 		        },		        
 		        {
-		            html : 'Item 3'
+					html: 'item3'
 		        }
 		    ]        	
         }
