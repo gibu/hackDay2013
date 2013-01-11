@@ -17,6 +17,8 @@
 	top:-42px;
 	position:relative;
 	opacity:0.5;
+	overflow:hidden;
+	text-overflow: elipsis;
 }
 #second{
 	margin-top:70px;
@@ -27,9 +29,13 @@
 	position:relative;
 	font-weight:bold;
 	padding-left:10%;
-	width:90%;
+	width:100%;
 	overflow:hidden;
 	white-space:nowrap;
+	padding: 0px 5px 0px 5px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: block;
 }
 #landingPage  div{
 	margin: 0px;
@@ -37,11 +43,11 @@
 	background-repeat: no-repeat;
 }
 #logo{
-	position:absolute;
-	top:0px;
-	left:0px;
 	width:200px;
 	height:60px;
+	position:absolute;
+	top: 0px;
+	left: 0px;
 }
 #logoTop{
 	height:60px;
@@ -114,7 +120,7 @@
       
 		.landingPageImg {
 			width: 100%;
-			height: 480px;
+			height: 650px;
 		}
 }
 
@@ -128,14 +134,14 @@
       	margin:auto;
       }
       .listElement{
-      	width:768px;
-      	float:none;
+      	float:left;
       }
       #logo{
-      	width:768px;
+      	width:100%;
+		margin: 0px;
       }
       .listElement img{
-      	width:285px;
+      	
       }
       .listElement.el0{
 
@@ -148,6 +154,14 @@
 		width: 730px;
 	}
 		
+	#second{
+		width: 684px;
+		margin: 70px auto;
+	}
+	#second .x-panel {
+		float: left;
+		margin: 0 72px 20px 0;
+	}
 
 }
 #landingPage .landingPageImg{
